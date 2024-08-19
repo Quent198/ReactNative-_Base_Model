@@ -1,13 +1,13 @@
 import { Text, View } from "react-native";
 import React from "react";
-import { Link } from "expo-router";
 
-const RootLayout = () => {
+
+const Home = () => {
   return (
     <View className="flex-1 items-center justify-center bg-white">
-      <Text>Nine Quest !</Text>
+      <Text>Home</Text>
     </View>
   );
 };
 
-export default RootLayout;
+export default Home;

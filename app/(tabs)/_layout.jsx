@@ -1,15 +1,30 @@
-import React from "react";
-import { Slot, Stack } from "expo-router";
-import { Text } from "react-native";
+import {Tabs} from "expo-router";
+import { View, Text } from "react-native";
+import {icons} from "../../constants"
 
-const RootLayout = () => {
-  return (
-    <>
-      <Stack>
-        <Stack.Screen name="index" options={{ headerShown: false }} />
-      </Stack>
-    </>
-  );
-};
+const TabIcon = ({icon,color, name, focused}) => {
+    return (
+        <View>
+            <Text>{name}</Text>
+        </View>
+    )
+}
 
-export default RootLayout;
+const TabsLayout = () => {
+    return (
+        <>
+        <Tabs>
+            <Tabs.Screen 
+            name= "home" 
+            options={{
+                title: "Home",
+                headerShown:false,
+                tabBarIcon: ({color,focused}) => 
+                    <TabIcon name="Home" icon={icons.home}/>,
+                
+            }}/>
+        </Tabs>
+        </>
+    )
+}
+export default TabsLayout;
