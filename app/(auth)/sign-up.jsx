@@ -9,13 +9,13 @@ import { createUser } from "../../lib/appwrite";
 
 const signUp = () => {
   const [form, setForm] = useState({
-    username: "",
-    email: "",
-    password: "",
+    username: "Quent",
+    email: "quentingraj@gmail.com",
+    password: "Azertggggggggy",
   });
 
   const submit = () => {
-    createUser();
+    createUser(form.email, form.password, form.username);
   };
   return (
     <SafeAreaView className="h-full bg-primary ">
