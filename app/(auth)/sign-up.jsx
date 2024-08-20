@@ -1,21 +1,40 @@
 import React from "react";
-import { SafeAreaView, Text, View, Image } from "react-native";
+import { SafeAreaView, Text, View, Image, Alert } from "react-native";
 import FormField from "../components/FormField";
 import { useState } from "react";
 import CustomButton from "../components/CustomButton";
 import { images } from "../../constants";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import { createUser } from "../../lib/appwrite";
+import { useGlobalContext } from "../../context/GlobalProvider";
 
 const signUp = () => {
+  const { setUser } = useGlobalContext();
+
   const [form, setForm] = useState({
-    username: "Quent",
-    email: "quentingraj@gmail.com",
-    password: "Azerty",
+    username: "Quentyy",
+    email: "quentingrajyy@gmail.com",
+    password: "Azertyyy",
   });
 
-  const submit = () => {
-    createUser(form.email, form.password, form.username);
+  console.log({ form });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const submit = async () => {
+    if (!form.username || !form.email || !form.password) {
+      Alert.alert("Erreur", "Veuillez remplir tous les champs");
+    }
+    setIsSubmitting(true);
+
+    try {
+      const result = await createUser(form.email, form.password, form.username);
+      router.replace("/home");
+    } catch (error) {
+      Alert.alert("Erreur", error.message);
+    } finally {
+      setIsSubmitting;
+    }
   };
   return (
     <SafeAreaView className="h-full bg-primary ">
