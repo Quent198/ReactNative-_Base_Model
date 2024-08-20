@@ -11,7 +11,7 @@ const signUp = () => {
   const [form, setForm] = useState({
     username: "Quent",
     email: "quentingraj@gmail.com",
-    password: "Azertggggggggy",
+    password: "Azerty",
   });
 
   const submit = () => {
